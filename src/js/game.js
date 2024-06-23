@@ -1,27 +1,43 @@
 import '../css/style.css'
-import { Actor, Engine, Vector, DisplayMode } from "excalibur"
-import { Resources, ResourceLoader } from './resources.js'
+import {Engine, Vector, DisplayMode, SolverStrategy,} from "excalibur"
+import {ResourceLoader } from './resources.js'
+import { Level } from './level1.js'
+import { Intro } from './intro.js'
+import { Victory } from './win.js'
+import { GameOver } from './gameover.js'
+
+
 
 export class Game extends Engine {
 
     constructor() {
         super({ 
-            width: 1280,
-            height: 720,
+            width: 1600,
+            height: 900,
             maxFps: 60,
-            displayMode: DisplayMode.FitScreen
+            displayMode: DisplayMode.FitScreen,
+            physics: {
+                solver: SolverStrategy.Arcade, 
+                gravity: new Vector(0, 950),
+            }
          })
         this.start(ResourceLoader).then(() => this.startGame())
     }
 
-    startGame() {
-        console.log("start de game!")
-        const fish = new Actor()
-        fish.graphics.use(Resources.Fish.toSprite())
-        fish.pos = new Vector(400, 300)
-        fish.vel = new Vector(-10,0)
-        this.add(fish)
+    startGame(){
+
+        this.add("intro", new Intro());
+        this.goToScene("intro")
+
+        
+        this.add("level", new Level())
+        this.add("gameOver", new GameOver())
+        this.add("victory", new Victory())
+
+
     }
+
+    
 }
 
-new Game()
+new Game();
