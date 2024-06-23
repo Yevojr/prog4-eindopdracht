@@ -8,8 +8,7 @@ export class Platform extends Actor {
             width: width,
             height: height,
         })
-        // this.width = width;
-        // this.height = height;
+        
         this.scaleX = scaleX;
         this.scaleY = scaleY;
         this.spriteResource = spriteResource;
