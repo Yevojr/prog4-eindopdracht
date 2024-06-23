@@ -44,7 +44,7 @@ export class Player extends Actor {
     }
 
     onInitialize(engine) {
-        //this.vel = new Vector(0, 0);
+       
         this.z = 2;
 
         this.body.limitDegreeOfFreedom.push(DegreeOfFreedom.Rotation);
