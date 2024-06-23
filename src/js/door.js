@@ -4,8 +4,6 @@ import { Resources } from "./resources";
 export class Door extends Actor {
     constructor(x, y){
         super({
-            // width: width,
-            // height: height, 
             pos: new Vector(x, y)
         });
         this.body.collisionType = CollisionType.Passive;
