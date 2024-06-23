@@ -1,5 +1,5 @@
 import {Actor, Vector, CollisionType, Shape} from "excalibur"
-import { Resources } from "./resources"
+
 
 export class Hazard extends Actor {
     constructor(x, y) {
